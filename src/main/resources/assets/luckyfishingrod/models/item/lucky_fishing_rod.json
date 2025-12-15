@@ -6,7 +6,7 @@
   "overrides": [
     {
       "predicate": {
-        "casting": 1.0
+        "luckyfishingrod:casting": 1.0
       },
       "model": "luckyfishingrod:item/lucky_fishing_rod_cast"
     }

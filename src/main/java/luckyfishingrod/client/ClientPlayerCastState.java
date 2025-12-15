@@ -11,9 +11,28 @@ public final class ClientPlayerCastState {
     public static boolean isCasting(LocalPlayer player) {
         return CASTING.getOrDefault(player.getUUID(), false);
     }
-    public static void setCasting(LocalPlayer player, boolean casting) {
-        if (casting) CASTING.put(player.getUUID(), true);
-        else CASTING.remove(player.getUUID());
+
+
+    public static void setCasting(net.minecraft.world.entity.player.Player player, boolean casting) {
+        if (player instanceof LocalPlayer) {
+            LocalPlayer localPlayer = (LocalPlayer) player;
+            if (casting) {
+                CASTING.put(localPlayer.getUUID(), true);
+            } else {
+                CASTING.remove(localPlayer.getUUID());
+            }
+        }
     }
-    public static void clearAll() { CASTING.clear(); }
+
+    public static boolean isLocalPlayerCasting() {
+        net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getInstance();
+        if (minecraft != null && minecraft.player != null) {
+            return CASTING.getOrDefault(minecraft.player.getUUID(), false);
+        }
+        return false;
+    }
+
+    public static void clearAll() {
+        CASTING.clear();
+    }
 }

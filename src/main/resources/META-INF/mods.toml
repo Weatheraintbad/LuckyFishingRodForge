@@ -1,10 +1,27 @@
+# 必需头信息
+modLoader="javafml"                       # 固定值
+loaderVersion="[47,)"                     # 与 Forge 47 匹配
+license="CC0-1.0"             # 任意开源或闭源协议
+
+[[mods]]                                  # 你的模组块
 modId="luckyfishingrod"
 version="1.1.1"
 displayName="Lucky Fishing Rod"
 description='Adds a new “fishing” tool for Minecraft'
 logoFile="icon.png"
 authors="Weatheraintbad"
+
+# 依赖声明
 [[dependencies.luckyfishingrod]]
 modId="forge"
 mandatory=true
 versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.luckyfishingrod]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"

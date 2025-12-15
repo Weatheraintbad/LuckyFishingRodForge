@@ -1,24 +1,21 @@
 package luckyfishingrod;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
+import luckyfishingrod.LuckyFishingBobberEntity;  // 添加这行导入
+import net.minecraft.world.entity.projectile.FishingHook;
+import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = LuckyFishingRod.MODID)
 public class ForgeEventSubscriber {
+
     @SubscribeEvent
-    public static void onEntityLeave(EntityLeaveLevelEvent event) {
-        if (!(event.getEntity() instanceof LuckyFishingBobberEntity bobber)) return;
-        Player owner = bobber.getPlayerOwner();
-        if (owner == null) return;
+    public static void onItemFished(ItemFishedEvent event) {
+        FishingHook hook = event.getHookEntity();
+        if (hook == null || !(hook instanceof LuckyFishingBobberEntity)) {
+            return;
+        }
 
-        ItemStack main = owner.getMainHandItem();
-        ItemStack off  = owner.getOffhandItem();
-        boolean hasLucky = main.getItem() == ModRegistry.LUCKY_FISHING_ROD.get() ||
-                off.getItem()  == ModRegistry.LUCKY_FISHING_ROD.get();
-
-        if (hasLucky) event.setCanceled(true);
+        LuckyFishingBobberEntity bobber = (LuckyFishingBobberEntity) hook;
     }
 }
