@@ -1,0 +1,10 @@
+modId="luckyfishingrod"
+version="1.1.1"
+displayName="Lucky Fishing Rod"
+description='Adds a new “fishing” tool for Minecraft'
+logoFile="icon.png"
+authors="Weatheraintbad"
+[[dependencies.luckyfishingrod]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
