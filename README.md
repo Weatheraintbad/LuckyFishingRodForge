@@ -2,7 +2,7 @@
 
 <div align="center">
   
-### Lucky Fishing Rod 的 Forge 版本，内容详见
+### 幸运钓竿的Forge版本，内容详见
 Forge version of Lucky Fishing Rod, detailed in<br>
 
 https://github.com/Weatheraintbad/LuckyFishingRod
